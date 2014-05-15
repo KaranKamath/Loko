@@ -28,7 +28,7 @@ namespace Loko.DataModel
             _lokoTasks = new ObservableCollection<LokoTask>();
         }
 
-        public async Task<ObservableCollection<LokoTask>> GetRituals()
+        public async Task<ObservableCollection<LokoTask>> GetLokoTasks()
         {
             await ensureDataLoaded();
             return _lokoTasks;

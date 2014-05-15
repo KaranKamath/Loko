@@ -34,7 +34,7 @@ namespace Loko
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
 
@@ -43,11 +43,19 @@ namespace Loko
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+
+            var lokoTasks = await App.DataModel.GetLokoTasks();
+            this.DataContext = lokoTasks;
         }
 
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AddTaskPage));
+        }
+
+        private void lokoTaskList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }
