@@ -52,5 +52,11 @@ namespace Loko
         {
             Frame.Navigate(typeof(LocationSelectionPage));
         }
+
+        private void ConfirmAppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.DataModel.AddLokoTask(taskTitleTextBox.Text);
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

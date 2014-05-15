@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Loko.DataModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace Loko
     public sealed partial class App : Application
     {
         private TransitionCollection transitions;
+        public static DataSource DataModel;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -35,6 +37,7 @@ namespace Loko
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+            DataModel = new DataSource();
         }
 
         /// <summary>

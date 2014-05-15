@@ -9,7 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Accept" Label="Confirm"/>
+            <AppBarButton Icon="Accept" Label="Confirm"
+                          x:Name="ConfirmAppBarButton"
+                          Click="ConfirmAppBarButton_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 
