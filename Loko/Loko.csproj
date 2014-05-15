@@ -88,6 +88,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\Task.cs" />
     <Compile Include="LocationSelectionPage.xaml.cs">
       <DependentUpon>LocationSelectionPage.xaml</DependentUpon>
     </Compile>
