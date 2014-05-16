@@ -41,7 +41,8 @@
                                        TextWrapping="NoWrap"
                                        TextTrimming="CharacterEllipsis"/>
                             <TextBlock Style="{StaticResource BodyTextBlockStyle}"
-                                   Text="{Binding ExpiryDateTime}"/>
+                                   Text="{Binding ExpiryDateTime}"
+                                      />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

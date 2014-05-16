@@ -14,6 +14,7 @@ namespace Loko.DataModel
     public class LokoTask
     {
         public string Title { get; set; }
+        public bool HasExpiry { get; set; }
         public DateTime ExpiryDateTime { get; set; }
         public ObservableCollection<Geopoint> TaskLocations { get; set; }
     }
@@ -68,7 +69,10 @@ namespace Loko.DataModel
         {
             var lokoTask = new LokoTask();
             lokoTask.Title = title;
-            
+            lokoTask.HasExpiry = false;
+            lokoTask.ExpiryDateTime = DateTime.MaxValue;
+            lokoTask.TaskLocations = new ObservableCollection<Geopoint>();
+
             _lokoTasks.Add(lokoTask);
             await saveLokoTaskDataAsync();
         }
@@ -77,6 +81,7 @@ namespace Loko.DataModel
         {
             var lokoTask = new LokoTask();
             lokoTask.Title = title;
+            lokoTask.HasExpiry = true;
             lokoTask.ExpiryDateTime = expiry;
             lokoTask.TaskLocations = new ObservableCollection<Geopoint>();
 
@@ -87,13 +92,24 @@ namespace Loko.DataModel
         {
             var lokoTask = new LokoTask();
             lokoTask.Title = title;
+            lokoTask.HasExpiry = true;
             lokoTask.ExpiryDateTime = expiry;
             lokoTask.TaskLocations = locations;
 
             _lokoTasks.Add(lokoTask);
             await saveLokoTaskDataAsync();
         }
+        public async void AddLokoTask(string title, ObservableCollection<Geopoint> locations)
+        {
+            var lokoTask = new LokoTask();
+            lokoTask.Title = title;
+            lokoTask.HasExpiry = false;
+            lokoTask.ExpiryDateTime = DateTime.MaxValue;
+            lokoTask.TaskLocations = locations;
 
+            _lokoTasks.Add(lokoTask);
+            await saveLokoTaskDataAsync();
+        }
         private async Task saveLokoTaskDataAsync()
         {
             var jsonSerializer = new DataContractJsonSerializer(typeof(ObservableCollection<LokoTask>));
