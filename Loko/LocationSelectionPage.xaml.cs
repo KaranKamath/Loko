@@ -35,5 +35,15 @@ namespace Loko
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
+
+        private void searchAppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            locationSearchBox.Visibility = Visibility.Visible;
+        }
+
+        private void locationMap_MapTapped(Windows.UI.Xaml.Controls.Maps.MapControl sender, Windows.UI.Xaml.Controls.Maps.MapInputEventArgs args)
+        {
+            locationSearchBox.Visibility = Visibility.Collapsed;
+        }
     }
 }
