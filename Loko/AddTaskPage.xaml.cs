@@ -55,7 +55,16 @@ namespace Loko
 
         private void ConfirmAppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            App.DataModel.AddLokoTask(taskTitleTextBox.Text);
+            if (expiryToggleSwitch.IsOn)
+            {
+                DateTime expiryDateTime = new DateTime(expiryDatePicker.Date.Year, 
+                    expiryDatePicker.Date.Month, expiryDatePicker.Date.Day) + expiryTimePicker.Time;
+                App.DataModel.AddLokoTask(taskTitleTextBox.Text, expiryDateTime);
+            }
+            else
+            {
+                App.DataModel.AddLokoTask(taskTitleTextBox.Text);
+            }
             Frame.Navigate(typeof(MainPage));
         }
     }
